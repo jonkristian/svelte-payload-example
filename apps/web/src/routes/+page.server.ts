@@ -1,4 +1,4 @@
-import { getPayloadInstance, initializePayload } from '../lib/payload-client';
+import { getPayloadInstance, initializePayload } from '$lib/payload-client';
 
 export async function load() {
 	await initializePayload();

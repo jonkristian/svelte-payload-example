@@ -1,11 +1,10 @@
 // payload-client.ts
-import { type BasePayload, getPayload, type GeneratedTypes } from 'payload';
-import { importConfig } from 'payload/node';
+import { getPayload } from 'payload';
 import 'dotenv/config';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-let payloadInstance: BasePayload<GeneratedTypes>;
+let payloadInstance: any;
 
 export async function initializePayload() {
 	const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -17,15 +16,20 @@ export async function initializePayload() {
 		__dirname,
 		`${payloadConfigPathPrefix}../../../cms/src/payload.config.ts`
 	);
-	const awaitedConfig = await importConfig(payloadConfigPath);
 
-	payloadInstance = await getPayload({ config: awaitedConfig });
+	try {
+		const configModule = await import(/* @vite-ignore */ payloadConfigPath);
+		const config = await configModule.default;
+		payloadInstance = await getPayload({ config });
+	} catch (error) {
+		console.error('Error initializing Payload:', error);
+		throw error;
+	}
 }
 
 export async function getPayloadInstance() {
 	if (!payloadInstance) {
-		throw new Error('Payload has not been initialized. Call initializePayload first.');
+		await initializePayload();
 	}
-
 	return payloadInstance;
 }

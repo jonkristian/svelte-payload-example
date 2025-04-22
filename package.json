@@ -2,19 +2,39 @@
   "name": "svelte-payload-example",
   "private": true,
   "scripts": {
-    "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
+    "build": "turbo build",
     "start": "turbo start",
+    "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "prettier": "^3.2.5",
-    "turbo": "latest"
+    "prettier": "^3.0.0",
+    "turbo": "^2.5.0"
   },
   "packageManager": "pnpm@9.1.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ],
+    "packageExtensions": {
+      "lucide-react": {
+        "peerDependencies": {
+          "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+        }
+      },
+      "react-hook-form": {
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17 || ^18 || ^19"
+        }
+      }
+    }
   }
 }

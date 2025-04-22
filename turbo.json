@@ -3,7 +3,11 @@
   "globalDependencies": [
     "**/.env.*local"
   ],
-  "pipeline": {
+  "globalEnv": [
+    "PAYLOAD_SECRET",
+    "PAYLOAD_PUBLIC_SERVER_URL"
+  ],
+  "tasks": {
     "build": {
       "dependsOn": [
         "^build"
