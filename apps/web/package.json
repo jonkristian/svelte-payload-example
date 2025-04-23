@@ -11,12 +11,13 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"lint": "prettier --check . && eslint .",
+		"start": "node build"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
-		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"eslint": "^9.18.0",
@@ -32,8 +33,8 @@
 		"vite": "^6.2.5"
 	},
 	"dependencies": {
-		"cms": "workspace:*",
 		"@payloadcms/db-postgres": "^3.35.1",
+		"cms": "workspace:*",
 		"dotenv": "^16.4.5",
 		"lexical": "^0.12.4",
 		"payload": "^3.35.1"
