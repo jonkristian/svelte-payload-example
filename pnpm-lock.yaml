@@ -83,6 +83,9 @@ importers:
       '@payloadcms/db-postgres':
         specifier: ^3.35.1
         version: 3.35.1(@libsql/client@0.14.0)(@types/react@19.1.0)(payload@3.35.1(graphql@16.10.0)(typescript@5.7.3))(react@19.1.0)
+      cms:
+        specifier: workspace:*
+        version: link:../cms
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
