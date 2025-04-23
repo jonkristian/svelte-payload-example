@@ -34,7 +34,7 @@
     },
     "start": {
       "dependsOn": [
-        "^build"
+        "build"
       ],
       "persistent": true
     }
